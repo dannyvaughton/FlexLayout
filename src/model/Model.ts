@@ -68,6 +68,7 @@ export class Model {
         attributeDefinitions.add("tabCloseType", 1).setType("ICloseType");
         attributeDefinitions.add("tabEnableFloat", false).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabEnableDrag", true).setType(Attribute.BOOLEAN);
+        attributeDefinitions.add("tabEnableHTMLDragAndDrop", false).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabEnableRename", true).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabClassName", undefined).setType(Attribute.STRING);
         attributeDefinitions.add("tabIcon", undefined).setType(Attribute.STRING);
@@ -80,6 +81,7 @@ export class Model {
         attributeDefinitions.add("tabSetEnableDeleteWhenEmpty", true).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabSetEnableDrop", true).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabSetEnableDrag", true).setType(Attribute.BOOLEAN);
+        attributeDefinitions.add("tabSetEnableHTMLDragAndDrop", false).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabSetEnableDivide", true).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabSetEnableMaximize", true).setType(Attribute.BOOLEAN);
         attributeDefinitions.add("tabSetEnableClose", false).setType(Attribute.BOOLEAN);

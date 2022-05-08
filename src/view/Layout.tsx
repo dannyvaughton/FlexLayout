@@ -914,13 +914,13 @@ export class Layout extends React.Component<ILayoutProps, ILayoutState> {
         this.outlineDiv.className = this.getClassName(CLASSES.FLEXLAYOUT__OUTLINE_RECT);
         this.outlineDiv.style.visibility = "hidden";
         rootdiv.appendChild(this.outlineDiv);
-
+     
         if (this.dragDiv == null) {
             this.dragDiv = this.currentDocument!.createElement("div");
             this.dragDiv.className = this.getClassName(CLASSES.FLEXLAYOUT__DRAG_RECT);
             this.dragDiv.setAttribute("data-layout-path", "/drag-rectangle");
-            this.dragRectRender(this.dragDivText, this.dragNode, this.newTabJson);
 
+            this.dragRectRender(this.dragDivText, this.dragNode, this.newTabJson);
             rootdiv.appendChild(this.dragDiv);
         }
         // add edge indicators

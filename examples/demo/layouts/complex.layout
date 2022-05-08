@@ -1,6 +1,8 @@
 {
 	"global": {
-		"tabEnableFloat": true
+		"tabEnableFloat": true,
+		"tabEnableHTMLDragAndDrop": true,
+		"tabSetEnableHTMLDragAndDrop": true
 	},
 	"layout": {
 		"type": "row",

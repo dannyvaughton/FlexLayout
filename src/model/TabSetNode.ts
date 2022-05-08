@@ -60,6 +60,7 @@ export class TabSetNode extends Node implements IDraggable, IDropTarget {
 
         attributeDefinitions.addInherited("enableDeleteWhenEmpty", "tabSetEnableDeleteWhenEmpty");
         attributeDefinitions.addInherited("enableDrop", "tabSetEnableDrop");
+        attributeDefinitions.addInherited("enableHTMLDragAndDrop", "tabSetEnableHTMLDragAndDrop");
         attributeDefinitions.addInherited("enableDrag", "tabSetEnableDrag");
         attributeDefinitions.addInherited("enableDivide", "tabSetEnableDivide");
         attributeDefinitions.addInherited("enableMaximize", "tabSetEnableMaximize");
@@ -176,6 +177,10 @@ export class TabSetNode extends Node implements IDraggable, IDropTarget {
 
     isEnableDrag() {
         return this._getAttr("enableDrag") as boolean;
+    }
+
+    isEnableHTMLDragAndDrop() {
+        return this._getAttr("enableHTMLDragAndDrop") as boolean;
     }
 
     isEnableDivide() {

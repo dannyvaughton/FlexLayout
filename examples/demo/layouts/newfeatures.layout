@@ -7,7 +7,9 @@
         "borderEnableAutoHide": true,
         "tabSetEnableClose":true,
         "splitterSize":1,
-        "splitterExtra":4
+        "splitterExtra":4,
+				"tabEnableHTMLDragAndDrop": true,
+		"tabSetEnableHTMLDragAndDrop": true
 	},
 	"layout": {
 		"type": "row",

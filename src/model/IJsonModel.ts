@@ -56,6 +56,7 @@ export interface IGlobalAttributes {
 	tabEnableFloat?: boolean; // default: false
 	tabEnableRename?: boolean; // default: true
 	tabEnableRenderOnDemand?: boolean; // default: true
+	tabEnableHTMLDragAndDrop?: boolean; // default: false
 	tabIcon?: string;
 	tabSetAutoSelectTab?: boolean; // default: true
 	tabSetBorderInsets?: IInsets; // default: {"top":0,"right":0,"bottom":0,"left":0}
@@ -66,6 +67,7 @@ export interface IGlobalAttributes {
 	tabSetEnableDivide?: boolean; // default: true
 	tabSetEnableDrag?: boolean; // default: true
 	tabSetEnableDrop?: boolean; // default: true
+	tabSetEnableHTMLDragAndDrop?: boolean; // default: false
 	tabSetEnableMaximize?: boolean; // default: true
 	tabSetEnableTabStrip?: boolean; // default: true
 	tabSetHeaderHeight?: number; // default: 0
@@ -93,6 +95,7 @@ export interface ITabSetAttributes {
 	enableDivide?: boolean; // default: true - inherited from global tabSetEnableDivide
 	enableDrag?: boolean; // default: true - inherited from global tabSetEnableDrag
 	enableDrop?: boolean; // default: true - inherited from global tabSetEnableDrop
+	enableHTMLDragAndDrop?: boolean; // default: false - inherited from global tabSetEnableHTMLDragAndDrop
 	enableMaximize?: boolean; // default: true - inherited from global tabSetEnableMaximize
 	enableTabStrip?: boolean; // default: true - inherited from global tabSetEnableTabStrip
 	headerHeight?: number; // default: 0 - inherited from global tabSetHeaderHeight
@@ -119,6 +122,7 @@ export interface ITabAttributes {
 	config?: any;
 	enableClose?: boolean; // default: true - inherited from global tabEnableClose
 	enableDrag?: boolean; // default: true - inherited from global tabEnableDrag
+	enableHTMLDragAndDrop?: boolean; // default: false - inherited from global tabEnableHTMLDragAndDrop
 	enableFloat?: boolean; // default: false - inherited from global tabEnableFloat
 	enableRename?: boolean; // default: true - inherited from global tabEnableRename
 	enableRenderOnDemand?: boolean; // default: true - inherited from global tabEnableRenderOnDemand

@@ -1,6 +1,8 @@
 {
 "global": {
-"tabEnableRename":false
+"tabEnableRename":false,
+"tabEnableHTMLDragAndDrop": true,
+		"tabSetEnableHTMLDragAndDrop": true
 },
 "layout":
 	{

@@ -1,5 +1,8 @@
 {
-	"global": {},
+	"global": {
+		"tabEnableHTMLDragAndDrop": true,
+		"tabSetEnableHTMLDragAndDrop": true
+	},
 	"borders": [],
 	"layout": {
 		"type": "row",

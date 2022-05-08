@@ -35,6 +35,7 @@ export class TabNode extends Node implements IDraggable {
         attributeDefinitions.addInherited("enableClose", "tabEnableClose").setType(Attribute.BOOLEAN);
         attributeDefinitions.addInherited("closeType", "tabCloseType").setType("ICloseType");
         attributeDefinitions.addInherited("enableDrag", "tabEnableDrag").setType(Attribute.BOOLEAN);
+        attributeDefinitions.addInherited("enableHTMLDragAndDrop", "tabEnableHTMLDragAndDrop").setType(Attribute.BOOLEAN);
         attributeDefinitions.addInherited("enableRename", "tabEnableRename").setType(Attribute.BOOLEAN);
         attributeDefinitions.addInherited("className", "tabClassName").setType(Attribute.STRING);
         attributeDefinitions.addInherited("icon", "tabIcon").setType(Attribute.STRING);
@@ -146,6 +147,10 @@ export class TabNode extends Node implements IDraggable {
 
     isEnableDrag() {
         return this._getAttr("enableDrag") as boolean;
+    }
+
+    isEnableHTMLDragAndDrop() {
+        return this._getAttr("enableHTMLDragAndDrop") as boolean;
     }
 
     isEnableRename() {

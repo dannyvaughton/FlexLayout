@@ -3,7 +3,9 @@
    		"tabEnableFloat": true,
         "tabSetMinHeight":100,
         "tabSetMinWidth":100,
-        "borderMinSize":100
+        "borderMinSize":100,
+				"tabEnableHTMLDragAndDrop": true,
+		"tabSetEnableHTMLDragAndDrop": true
 	},
 	"layout": {
 		"type": "row",

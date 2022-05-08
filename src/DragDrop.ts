@@ -45,6 +45,8 @@ export class DragDrop {
     /** @internal */
     private _dragging: boolean = false;
     /** @internal */
+    private _dragStartElement?: HTMLElement | undefined;
+    /** @internal */
     private _active: boolean = false; // drag and drop is in progress, can be used on ios to prevent body scrolling (see demo)
     /** @internal */
     private _document?: HTMLDocument;
@@ -89,13 +91,14 @@ export class DragDrop {
             }
             this.resizeGlass();
             this._document.defaultView?.addEventListener('resize', this.resizeGlass);
-            this._document.body.appendChild(this._glass!);
+            setTimeout(() => this._document!.body.appendChild(this._glass!), 0); // NOTE: Allows glass to be rendered, once HTML drag is underway
             this._glass!.tabIndex = -1;
             this._glass!.focus();
             this._glass!.addEventListener("keydown", this._onKeyPress);
-            this._glass!.addEventListener("dragenter", this._onDragEnter, { passive: false });
             this._glass!.addEventListener("dragover", this._onMouseMove, { passive: false });
-            this._glass!.addEventListener("dragleave", this._onDragLeave, { passive: false });
+            // TODO: Breaks HTMLDragAndDrop
+            // this._glass!.addEventListener("dragenter", this._onDragEnter, { passive: false });
+            // this._glass!.addEventListener("dragleave", this._onDragLeave, { passive: false });
             this._glassShowing = true;
             this._fDragCancel = fCancel;
             this._manualGlassManagement = false;
@@ -150,6 +153,7 @@ export class DragDrop {
     ) {
         // prevent 'duplicate' action (mouse event for same action as previous touch event (a fix for ios))
         if (event && this._lastEvent && this._lastEvent.type.startsWith("touch") && event.type.startsWith("mouse") && event.timeStamp - this._lastEvent.timeStamp < 500) {
+            debugger;
             return;
         }
 
@@ -179,8 +183,11 @@ export class DragDrop {
             if (!window.matchMedia || window.matchMedia("(pointer: fine)").matches) {
                 this._setDefaultGlassCursor(getComputedStyle(event.target as Element).cursor);
             }
-            this._stopPropagation(event);
-            this._preventDefault(event);
+            
+            if(event.type !== 'dragstart') {
+                this._stopPropagation(event);
+                this._preventDefault(event);
+            }
         } else {
             this._startX = 0;
             this._startY = 0;
@@ -205,7 +212,13 @@ export class DragDrop {
             this._document.addEventListener("dragend", this._onDragCancel, { passive: false });
             this._document.addEventListener("drop", this._onMouseUp, { passive: false });
         } else {
-            this._document.addEventListener("mouseup", this._onMouseUp, { passive: false });
+
+            if(event?.type === 'dragstart' && event.target) {
+                this._dragStartElement = event.target as HTMLElement;
+                this._dragStartElement.addEventListener("dragend", this._onMouseUp, { passive: false });
+            } else {
+                this._document.addEventListener("mouseup", this._onMouseUp, { passive: false });
+            }
             this._document.addEventListener("mousemove", this._onMouseMove, { passive: false });
             this._document.addEventListener("touchend", this._onMouseUp, { passive: false });
             this._document.addEventListener("touchmove", this._onMouseMove, { passive: false });
@@ -331,6 +344,11 @@ export class DragDrop {
         this._document!.removeEventListener("touchend", this._onMouseUp);
         this._document!.removeEventListener("touchmove", this._onMouseMove);
 
+        if(this._dragStartElement) {
+            this._dragStartElement.removeEventListener("dragend", this._onMouseUp);
+            this._dragStartElement = undefined;
+        }
+
         if (!this._manualGlassManagement) {
             this.hideGlass();
         }
@@ -373,6 +391,7 @@ export class DragDrop {
 
     /** @internal */
     private _onDragEnter(event: DragEvent) {
+        event.dataTransfer!.dropEffect = "copy";
         this._preventDefault(event);
         this._stopPropagation(event);
         this._dragDepth++;
@@ -385,6 +404,7 @@ export class DragDrop {
         this._stopPropagation(event);
         this._dragDepth--;
         if (this._dragDepth <= 0) {
+            console.log('cancelling drag')
             this._onDragCancel();
         }
         return false;
