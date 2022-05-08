@@ -30,7 +30,7 @@ export const TabButton = (props: ITabButtonProps) => {
         event.stopPropagation();
         removeDragGhostImage(event);
         event.dataTransfer.effectAllowed = "copyMove";
-        layout.dragStart(event, undefined, node, node.isEnableDrag())
+        layout.dragStart(event, undefined, node, node.isEnableDrag());
     }
 
     const onMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>) => {
