@@ -1081,6 +1081,12 @@ export class Layout extends React.Component<ILayoutProps, ILayoutState> {
     }
 
     /** @internal */
+    // TODO: 
+    onExternalLayoutDrag(event: React.DragEvent<HTMLDivElement>) {
+        
+    }
+
+    /** @internal */
     onDragEnter(event: React.DragEvent<HTMLDivElement>) {
         // DragDrop keeps track of number of dragenters minus the number of
         // dragleaves. Only start a new drag if there isn't one already.
@@ -1094,7 +1100,6 @@ export class Layout extends React.Component<ILayoutProps, ILayoutState> {
             this.dragStart(event, drag.dragText, TabNode._fromJson(drag.json, this.props.model, false), true, undefined, undefined);
         }
     }
-
 
     /** @internal */
     checkForBorderToShow(x: number, y: number) {
@@ -1180,6 +1185,7 @@ export class Layout extends React.Component<ILayoutProps, ILayoutState> {
     getTabSetPlaceHolderCallback() {
         return this.props.onTabSetPlaceHolder;
     }
+    
     /** @internal */
     showContextMenu(node: TabNode | TabSetNode | BorderNode, event: React.MouseEvent<HTMLElement, MouseEvent>) {
         if (this.props.onContextMenu) {
